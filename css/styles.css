@@ -128,6 +128,12 @@ button {
   margin-bottom: 8px;
 }
 
+.modal-text {
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
 .icon-list {
   display: flex;
   justify-content: space-between;
@@ -140,6 +146,49 @@ button {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+  border: 1.25px solid var(--dark-color);
+  border-radius: 2px;
+  transition: border var(--animation-dur-timing),
+    background-image var(--animation-dur-timing),
+    background-color var(--animation-dur-timing);
+}
+
+.checkbox-input {
+  left: 0.8em;
+  bottom: 0;
+}
+
+.privacy-policy-text:hover .checkbox {
+  border: 1.25px solid var(--pressed-state-color);
+}
+
+.checkbox-input:focus + .checkbox {
+  border: 1.25px solid var(--pressed-state-color);
+}
+
+.checkbox-input:checked + .checkbox {
+  background-color: var(--pressed-state-color);
+  background-image: url('data:image/svg+xml,%3Csvg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M8.44558 0.255056C8.61838 0.089653 8.84834 -0.00178848 9.08693 2.65108e-05C9.32551 0.0018415 9.55407 0.0967713 9.72436 0.264784C9.89466 0.432797 9.99337 0.660752 9.99968 0.900549C10.006 1.14034 9.91939 1.37323 9.75816 1.55005L4.86357 7.70436C4.7794 7.79551 4.67782 7.86865 4.5649 7.91942C4.45198 7.97018 4.33003 7.99754 4.20636 7.99984C4.08268 8.00214 3.95981 7.97935 3.8451 7.93282C3.73038 7.88629 3.62618 7.81698 3.53872 7.72903L0.292827 4.46564C0.202435 4.38096 0.129933 4.27884 0.0796475 4.16537C0.0293621 4.05191 0.00232279 3.92942 0.000143182 3.80522C-0.00203643 3.68102 0.0206883 3.55765 0.0669613 3.44248C0.113234 3.3273 0.182108 3.22267 0.269473 3.13483C0.356838 3.047 0.460905 2.97775 0.575465 2.93123C0.690026 2.88471 0.812734 2.86186 0.936267 2.86405C1.0598 2.86624 1.18163 2.89343 1.29449 2.94398C1.40734 2.99454 1.50892 3.06743 1.59315 3.15831L4.16189 5.73967L8.42227 0.28219C8.42994 0.272694 8.43813 0.263635 8.4468 0.255056H8.44558Z" fill="%23F4F4FD"/%3E%3C/svg%3E%0A');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: 1.25px solid var(--pressed-state-color);
 }
 
 /* =============== /COMPONENTS =============== */
@@ -256,7 +305,10 @@ button {
   margin-bottom: 48px;
 }
 
-.hero-button {
+.modal-button {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
   background-color: var(--primary-brand-color);
   color: var(--light-text-color);
   letter-spacing: 0.04em;
@@ -267,12 +319,12 @@ button {
   transition: background-color var(--animation-dur-timing);
 }
 
-.hero-button:hover,
-.hero-button:focus {
+.modal-button:hover,
+.modal-button:focus {
   background-color: var(--pressed-state-color);
 }
 
-.hero-button:active {
+.modal-button:active {
   background-color: var(--pressed-state-color);
 }
 /* =============== /HERO =============== */
@@ -406,6 +458,10 @@ button {
   color: var(--accent-color);
 }
 
+.footer-social-container {
+  margin-right: 80px;
+}
+
 .footer-social-paragraph {
   color: var(--light-text-color);
   margin-bottom: 16px;
@@ -433,62 +489,78 @@ button {
   fill: var(--light-text-color);
 }
 
-/* =============== /FOOTER =============== */
+.fotter-form-container {
+  flex-grow: 1;
+}
 
-/* =============== MODAL WINDOW =============== */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+.footer-form-paragraph {
+  display: block;
   width: 100%;
-  height: 100%;
-  background-color: rgba(46, 47, 66, 0.4);
-  transform-origin: top;
-  transition: opacity var(--animation-dur-timing),
-    visibility var(--animation-dur-timing),
-    transform var(--animation-dur-timing);
+  font-weight: 500;
+  color: var(--light-text-color);
+  margin-bottom: 16px;
 }
 
-.modal-backdrop.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: perspective(3000px) scale(1.1) rotateX(30deg);
-  pointer-events: none;
+.footer-form-input-container {
+  display: flex;
 }
 
-.modal-window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 408px;
-  height: 576px;
-  transform: translate(-50%, -50%);
-  background-color: #fcfcfc;
+.footer-form-input-text {
+  flex-grow: 1;
+  margin-right: 24px;
+  padding: 8px 16px;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: var(--light-text-color);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  transition: border var(--animation-dur-timing);
 }
 
-.modal-close-button {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+.footer-form-input-text::placeholder {
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-form-input-text:focus {
+  border: 1px solid #4d5ae5;
+  outline: none;
+}
+
+.footer-form-btm {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--primary-brand-color);
+  color: var(--light-text-color);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  gap: 16px;
+  transition: background-color var(--animation-dur-timing);
+}
+
+.footer-form-btm:hover,
+.footer-form-btm:focus {
+  background-color: var(--pressed-state-color);
+}
+
+.footer-form-btn-icon {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  fill: var(--light-text-color);
 }
 
-.modal-close-button-icon {
-  fill: #000000;
-}
-
-/* =============== /MODAL WINDOW =============== */
+/* =============== /FOOTER =============== */
 
 /* =============== PORTFOLIO =============== */
 
@@ -586,3 +658,165 @@ button {
 }
 
 /* =============== /PORTFOLIO =============== */
+
+/* =============== MODAL WINDOW =============== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transform-origin: top;
+  transition: opacity var(--animation-dur-timing),
+    visibility var(--animation-dur-timing);
+}
+
+.modal-backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 408px;
+  padding: 72px 24px 24px 24px;
+  transform: translate(-50%, -50%);
+  background-color: #fcfcfc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 500ms cubic-bezier(0.56, 0.54, 0.02, 0.99);
+}
+
+.modal-backdrop.is-hidden .modal-window {
+  transform: perspective(100px) scale(1.1) rotateX(1deg) translate(-50%, -50%);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color var(--animation-dur-timing);
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  background-color: var(--pressed-state-color);
+}
+
+.modal-close-button-icon {
+  fill: #000000;
+  transition: fill var(--animation-dur-timing);
+}
+
+.modal-close-button:hover .modal-close-button-icon,
+.modal-close-button:focus .modal-close-button-icon {
+  fill: var(--light-text-color);
+}
+
+.modal-call-to-action {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--dark-color);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-lable {
+  margin-bottom: 4px;
+  color: var(--subtle-text-color);
+}
+
+.modal-input-text {
+  width: 100%;
+  height: 40px;
+  padding-left: 38px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  color: var(--dark-color);
+  transition: border var(--animation-dur-timing);
+}
+
+.modal-input-text:focus {
+  outline: none;
+  border: 1px solid var(--primary-brand-color);
+}
+
+.modal-input-text-comment {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  resize: none;
+  height: 120px;
+}
+
+.modal-input-text-comment::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.modal-input-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.modal-input-icon {
+  width: 18px;
+  height: 24px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  fill: var(--dark-color);
+  transition: fill var(--animation-dur-timing);
+}
+
+.modal-input-text:focus + .modal-input-icon {
+  fill: var(--primary-brand-color);
+}
+
+.privacy-policy-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.privacy-policy-text {
+  position: relative;
+  color: #757575;
+  padding-left: 24px;
+}
+
+.privacy-policy-link {
+  color: var(--primary-brand-color);
+}
+
+.privacy-policy-checkbox {
+  position: absolute;
+  margin-left: -24px;
+}
+
+.modal-button-send {
+  min-width: 169px;
+  align-self: center;
+}
+
+/* =============== /MODAL WINDOW =============== */
