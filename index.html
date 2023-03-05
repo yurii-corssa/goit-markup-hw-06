@@ -61,7 +61,7 @@
       <section class="hero">
         <div class="container hero-container">
           <h1 class="hero-main-title">Effective Solutions for Your Business</h1>
-          <button class="hero-button" type="button" data-modal-open>
+          <button class="modal-button" type="button" data-modal-open>
             Order Service
           </button>
         </div>
@@ -595,6 +595,34 @@
             </li>
           </ul>
         </div>
+        <div class="fotter-form-container">
+          <form action="javascript:void(0);" class="footer-form">
+            <label
+              for="e-mail_for_subscribe"
+              class="paragraph footer-form-paragraph"
+              >Subscribe
+            </label>
+            <div class="footer-form-input-container">
+              <input
+                type="email"
+                class="footer-form-input-text"
+                name="e-mail_for_subscribe"
+                id="e-mail_for_subscribe"
+                placeholder="E-mail"
+              />
+              <button type="submit" class="footer-form-btm">
+                Subscribe
+                <svg class="footer-form-btn-icon">
+                  <use
+                    href="./images/sprite.svg#send"
+                    width="24px"
+                    height="24px"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </footer>
     <!-- =============== /FOOTER =============== -->
@@ -607,6 +635,89 @@
             <use href="./images/sprite.svg#close-button"></use>
           </svg>
         </button>
+        <p class="modal-call-to-action">
+          Leave your contacts and we will call you back
+        </p>
+        <form action="javascript:void(0);" class="modal-form">
+          <label for="name" class="modal-lable modal-text">Name</label>
+          <div class="modal-input-wrapper">
+            <input
+              type="text"
+              name="user_name"
+              class="modal-input-text modal-text"
+              id="name"
+              pattern="[a-zA-Zа-яА-ЯіІїЇєЄ\s]+"
+              title="Name"
+            />
+            <svg class="modal-input-icon">
+              <use
+                href="./images/sprite.svg#person"
+                width="18px"
+                height="24px"
+              ></use>
+            </svg>
+          </div>
+          <label for="phone-number" class="modal-lable modal-text">Phone</label>
+          <div class="modal-input-wrapper">
+            <input
+              type="tel"
+              class="modal-input-text modal-text"
+              id="phone-number"
+              name="phone_number"
+              pattern="\d{3}-\d{3}-\d{4}"
+              title="050-123-4567"
+              required
+            />
+            <svg class="modal-input-icon">
+              <use
+                href="./images/sprite.svg#phone"
+                width="18px"
+                height="24px"
+              ></use>
+            </svg>
+          </div>
+          <label for="e-mail" class="modal-lable modal-text">Email</label>
+          <div class="modal-input-wrapper">
+            <input
+              type="email"
+              class="modal-input-text modal-text"
+              id="e-mail"
+              name="e-mail"
+            />
+            <svg class="modal-input-icon">
+              <use
+                href="./images/sprite.svg#email"
+                width="18px"
+                height="24px"
+              ></use>
+            </svg>
+          </div>
+          <label for="comment" class="modal-lable modal-text">Comment</label>
+          <textarea
+            name="comment"
+            class="modal-input-text modal-text modal-input-text-comment"
+            id="comment"
+            placeholder="Text input"
+          ></textarea>
+          <div class="privacy-policy-wrapper">
+            <label class="privacy-policy-text modal-text">
+              <input
+                type="checkbox"
+                class="checkbox-input visually-hidden"
+                name="privacy_policy"
+                required
+              />
+              <span class="privacy-policy-checkbox checkbox"></span>
+              I accept the terms and conditions of the&nbsp;
+            </label>
+            <a href="" class="privacy-policy-link link modal-text"
+              >Privacy Policy</a
+            >
+          </div>
+          <button type="submit" class="modal-button modal-button-send">
+            Send
+          </button>
+        </form>
       </div>
     </div>
 
